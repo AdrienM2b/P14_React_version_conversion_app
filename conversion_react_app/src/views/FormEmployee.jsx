@@ -40,57 +40,63 @@ export default function FormEmployee() {
   return (
     <>
       <form className='form_container' onSubmit={handleSubmit}>
-        <Input
-          infos={'firstname'}
-          label={'First Name'}
-          value={employee.firstname}
-          onChange={handleChange}
-        />
-        <Input
-          infos={'lastname'}
-          label={'Last Name'}
-          value={employee.lastname}
-          onChange={handleChange}
-        />
-        <p>Date of birth</p>
-        <DateSelector
-          name='birth'
-          onChange={handleChange}
-          value={employee.birth}
-        />
-        <p>Start Date</p>
-        <DateSelector
-          name='startDate'
-          onChange={handleChange}
-          value={employee.startDate}
-        />
-        <div className='address_container'>
-          <h2>Address</h2>
-          <Input
-            infos={'street'}
-            label={'Street'}
-            value={employee.street}
-            onChange={handleChange}
-          />
-          <Input
-            infos={'city'}
-            label={'City'}
-            value={employee.city}
-            onChange={handleChange}
-          />
-          <List
-            infos={'stateUSA'}
-            data={states}
-            label={'State'}
-            value={employee.stateUSA}
-            onChange={handleChange}
-          />
-          <Input
-            infos={'zipcode'}
-            label={'Zip Code'}
-            value={employee.zipCode}
-            onChange={handleChange}
-          />
+        <div className='address_infos_employee_container'>
+          <div className='infos_employee_container'>
+            <Input
+              infos={'firstname'}
+              label={'First Name'}
+              value={employee.firstname}
+              onChange={handleChange}
+            />
+            <Input
+              infos={'lastname'}
+              label={'Last Name'}
+              value={employee.lastname}
+              onChange={handleChange}
+            />
+            <p>Date of birth</p>
+            <DateSelector
+              name='birth'
+              onChange={handleChange}
+              value={employee.birth}
+            />
+            <p>Start Date</p>
+            <DateSelector
+              name='startDate'
+              onChange={handleChange}
+              value={employee.startDate}
+            />
+          </div>
+          <div className='address_container'>
+            <div className='input_address_container'>
+              <Input
+                infos={'street'}
+                label={'Street'}
+                value={employee.street}
+                onChange={handleChange}
+              />
+              <Input
+                infos={'city'}
+                label={'City'}
+                value={employee.city}
+                onChange={handleChange}
+              />
+              <List
+                infos={'stateUSA'}
+                data={states}
+                label={'State'}
+                value={employee.stateUSA}
+                onChange={handleChange}
+              />
+              <Input
+                infos={'zipcode'}
+                label={'Zip Code'}
+                value={employee.zipCode}
+                onChange={handleChange}
+              />
+            </div>
+            <h2>Address</h2>
+          </div>
         </div>
         <List
           label={'Departement'}

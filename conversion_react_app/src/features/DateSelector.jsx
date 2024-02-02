@@ -13,6 +13,11 @@ export default function DateSelector({ value, onChange, name }) {
     onChange({ target: { name, value: dateInString } });
   };
   return (
-    <DatePicker selected={startDate} onChange={handleChange} locale='fr' />
+    <DatePicker
+      wrapperClassName='datePicker'
+      selected={startDate}
+      onChange={handleChange}
+      locale='fr'
+    />
   );
 }
