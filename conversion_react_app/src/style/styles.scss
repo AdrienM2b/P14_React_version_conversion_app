@@ -1,4 +1,20 @@
 .form_container {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  height: 70vh;
+  h2 {
+    font-size: 20px;
+  }
+  .address_container {
+    height: 40vh;
+    border: 1px solid;
+    border-color: black;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+  }
+  .input_container {
+    height: 2vh;
+  }
 }
