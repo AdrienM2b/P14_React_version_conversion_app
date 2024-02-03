@@ -4,8 +4,11 @@ import List from '../features/List';
 import Input from '../features/Input.jsx';
 import DateSelector from '../features/DateSelector.jsx';
 import { states, departement } from '../state.js';
+import { useDispatch } from 'react-redux';
+import { addEmployee } from '../store/employeeSlice.js';
 
 export default function FormEmployee() {
+  const dispatch = useDispatch();
   const [employee, setEmployee] = useState({
     firstname: '',
     lastname: '',
@@ -24,7 +27,7 @@ export default function FormEmployee() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('employee', employee);
+    dispatch(addEmployee(employee));
     setEmployee({
       firstname: '',
       lastname: '',
@@ -70,12 +73,14 @@ export default function FormEmployee() {
           <div className='address_container'>
             <div className='input_address_container'>
               <Input
+                type={'text'}
                 infos={'street'}
                 label={'Street'}
                 value={employee.street}
                 onChange={handleChange}
               />
               <Input
+                type={'text'}
                 infos={'city'}
                 label={'City'}
                 value={employee.city}
@@ -89,7 +94,8 @@ export default function FormEmployee() {
                 onChange={handleChange}
               />
               <Input
-                infos={'zipcode'}
+                type={'number'}
+                infos={'zipCode'}
                 label={'Zip Code'}
                 value={employee.zipCode}
                 onChange={handleChange}

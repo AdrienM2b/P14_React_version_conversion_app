@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default function Input({ infos, label, value, onChange }) {
+export default function Input({ infos, label, value, type, onChange }) {
   return (
     <>
       <h2>{label}</h2>
       <input
         className='input_container'
-        type='text'
+        type={type}
         name={infos}
         value={value}
         onChange={onChange}
