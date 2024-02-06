@@ -1,6 +1,7 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const columns = [
   {
@@ -35,6 +36,7 @@ export default function TableEmployee() {
   return (
     <>
       <DataTable columns={columns} data={data} />
+      <Link to='/'>Home</Link>
     </>
   );
 }

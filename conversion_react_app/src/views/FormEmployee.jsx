@@ -23,6 +23,7 @@ export default function FormEmployee() {
 
   const handleChange = (e) => {
     setEmployee({ ...employee, [e.target.name]: e.target.value });
+    console.log('employee', employee);
   };
 
   const handleSubmit = (e) => {
