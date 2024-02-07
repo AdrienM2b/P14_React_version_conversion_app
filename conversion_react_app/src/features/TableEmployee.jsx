@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -14,28 +14,46 @@ const columns = [
     selector: (row) => row.lastname,
     sortable: true,
   },
-];
-
-const data = [
   {
-    id: 1,
-    firstname: 'Beetlejuice',
-    lastname: '1988',
+    name: 'Birthday',
+    selector: (row) => row.birth,
+    sortable: true,
   },
-  {
-    id: 2,
-    firstname: 'Ghostbusters',
-    lastname: '1984',
-  },
+  { name: 'Start Date', selector: (row) => row.startDate, sortable: true },
+  { name: 'Street', selector: (row) => row.street, sortable: true },
+  { name: 'City', selector: (row) => row.city, sortable: true },
+  { name: 'State', selector: (row) => row.stateUSA, sortable: true },
+  { name: 'Zip Code', selector: (row) => row.zipCode, sortable: true },
+  { name: 'Departement', selector: (row) => row.departement, sortable: true },
 ];
 
 export default function TableEmployee() {
+  const [searchTerm, setSearchTerm] = useState('');
   const employees = useSelector((state) => state.employee);
 
-  console.log(employees);
+  const filteredEmployees = employees.filter((employee) =>
+    Object.values(employee).some((value) =>
+      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
+  const data = filteredEmployees.length ? filteredEmployees : [{}];
+
   return (
     <>
-      <DataTable columns={columns} data={data} />
+      <h1>Current Employees</h1>
+      <input
+        type='text'
+        placeholder='Search'
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <DataTable
+        columns={columns}
+        data={data}
+        noDataComponent={<div>Aucune donnée disponible</div>}
+        pagination
+      />
       <Link to='/'>Home</Link>
     </>
   );
